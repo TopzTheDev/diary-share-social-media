@@ -6,9 +6,11 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const keys = require('./config/keys');
-
+const path = require('path');
 
 const app = express();
+
+//Handlebar middleware
 app.engine('handlebars', exphbs({defaultLayout: 'main'}))
 app.set('view engine', 'handlebars');
 
@@ -16,6 +18,8 @@ app.set('view engine', 'handlebars');
 // =========="USER MODEL"==========
 require('./models/Users');
 
+// Accessing public folder
+app.use(express.static(path.join(__dirname,'public')));
 
 // Passport config
 require('./config/passport')(passport);
@@ -40,10 +44,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
-app.get('/',(req,res)=>{
-    res.send('Hello World');
-});
-
 app.use(cookieParser());
 app.use(session({
     secret: 'secret',
@@ -65,7 +65,7 @@ app.use((req,res, next)=>{
 
 // Use routes
 app.use('/auth',auth);
-app.use(index);
+app.use('/',index);
 
 const port = process.env.PORT || 5000; 
 
