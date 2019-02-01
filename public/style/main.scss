@@ -18,6 +18,10 @@ html{
     margin: 0 auto;
 }
 
+:root{
+    --color-black: #2b2b2b;
+}
+
 // NAVIGATION BAR ===================================================================
 
 .nav{
@@ -38,12 +42,33 @@ html{
         width: auto;
     }
 
-
     &__form{
         display: flex;
         margin-left: auto;
         align-items: center;
         justify-content: center;
+    }
+
+}
+
+.login{
+    background-color: #fff;
+    box-shadow: 0 1px 1px rgba(#000,0.3);
+
+    &__nav{
+        padding: 10px;
+        display: flex;
+    }
+
+    &__logo{
+        height: 30px;
+        width: auto;
+    }
+
+    &__profile{
+        margin-left: auto;
+        display: flex;
+        align-items: center;
     }
 }
 
@@ -142,9 +167,6 @@ html{
         &:hover::before{
             transform: translateX(-10px);
         }
-
-        
-    
     }
 
     &:hover{
@@ -156,6 +178,30 @@ html{
         
         box-shadow:0 5px 10px rgba(#353068,0.3);
         transform: translateY(-1px);
+    }
+
+    &--logout{
+        color: #353068;
+        font-size: 1.4rem;
+        padding: 5px 10px;
+    }
+}
+
+//PROFILE =========================================================================
+
+.profile{
+
+    &__img{
+        height: 35px;
+        width: auto;
+        margin-right: 5px;
+        border-radius: 100%;
+    }
+
+    &__name{
+        font-size: 1.6rem;
+        margin-right: 10px;
+        color: var(--color-black);
     }
 }
 

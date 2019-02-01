@@ -21,6 +21,10 @@ html {
   margin: 0 auto;
 }
 
+:root {
+  --color-black: #2b2b2b;
+}
+
 .nav {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -49,6 +53,34 @@ html {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.login {
+  background-color: #fff;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.login__nav {
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.login__logo {
+  height: 30px;
+  width: auto;
+}
+
+.login__profile {
+  margin-left: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .welcome {
@@ -177,6 +209,25 @@ html {
           box-shadow: 0 5px 10px rgba(53, 48, 104, 0.3);
   -webkit-transform: translateY(-1px);
           transform: translateY(-1px);
+}
+
+.btn--logout {
+  color: #353068;
+  font-size: 1.4rem;
+  padding: 5px 10px;
+}
+
+.profile__img {
+  height: 35px;
+  width: auto;
+  margin-right: 5px;
+  border-radius: 100%;
+}
+
+.profile__name {
+  font-size: 1.6rem;
+  margin-right: 10px;
+  color: var(--color-black);
 }
 
 .paragraph--header {
