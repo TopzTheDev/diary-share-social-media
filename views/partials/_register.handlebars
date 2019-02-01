@@ -1,0 +1,53 @@
+ <div class="cover">
+        <div class="popup-form">
+            <div class="popup-form__coloumn">
+                <img src="image/register.png" alt="" class="popup-form__image">
+            </div>
+            <div class="popup-form__coloumn">
+                <form action="/auth/register" method="post" class="popup-form__form">
+                    <h1 class="heading heading--secondary">Register</h1>
+                    <p class="popup-form__desc">Be the part of the growing community, Share your thoughts everyday to be a able to help you to grow</p>
+
+                    <div class="form__group">
+                        <div class="form__members">
+                            <label class="form__lbl"  for="fname">First Name</label>
+                            <input type="text" class="inp inp--sign" placeholder="First Name" id="fname" name="fname">
+                        </div>
+
+                        <div class="form__members">
+                            <label class="form__lbl"  for="lname">Last Name</label>
+                            <input type="text" class="inp inp--sign" placeholder="Last Name" id="lname" name="lname">
+                        </div>
+                    </div>
+                    
+                    <div class="form__group">
+                        <div class="form__members">
+                            <label class="form__lbl" for="email" >Email Address</label>
+                            <input type="text" class="inp inp--sign" placeholder="Email Address" id="email" name="email">
+                        </div>
+                    </div>
+                    
+                    <div class="form__group">
+                        <div class="form__members">
+                            <label class="form__lbl" for="pass">Password</label>
+                            <input type="password" class="inp inp--sign" placeholder="Password" id="pass" name="password">
+                        </div>
+                    </div>
+                    
+                    <div class="form__group">
+                        <div class="form__members">
+                            <label class="form__lbl" for="conpass">Confirm Password</label>
+                            <input type="password" class="inp inp--sign" placeholder="Confirm Password" id="conpass" name="password">
+                        </div>
+                    </div>
+                
+                    <button class="btn btn--secondary mt-1">Register</button>
+                    <a href="/auth/google" class="btn btn--primary mt-1"  style="display: inline">
+                    Sign up with
+                    <img src="https://img.icons8.com/color/48/000000/google-logo.png" class="btn__img">
+                    </a>
+                </form>
+            </div>
+            <button class="popup-form__exit" id="btn_exit">&Cross;</button>
+        </div>
+    </div>

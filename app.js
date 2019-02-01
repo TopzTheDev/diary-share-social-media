@@ -8,6 +8,9 @@ const session = require('express-session');
 const keys = require('./config/keys');
 const path = require('path');
 
+//Controller requiring
+// require('./controllers/registerController');
+
 const app = express();
 
 //Handlebar middleware
