@@ -17,6 +17,7 @@
         crossorigin="anonymous">
     <link rel="stylesheet" href="/style/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,300i,400,700" rel="stylesheet">
+    
 </head>
 
 <body>
@@ -24,12 +25,14 @@
         {{> _header}}
     </header>
     {{> _add-diary-btn}}
-    {{> _add-diary-field}}
+    {{> _add}}
     {{> _register}}
     <main>
         {{{body}}}
     </main>
     {{>_footer}}
     <script src="controllers/registerController.js"></script>
+    
+    
 </body>
 </html>

@@ -20,6 +20,7 @@ app.set('view engine', 'handlebars');
 // Load model here....
 // =========="USER MODEL"==========
 require('./models/Users');
+require('./models/Diary');
 
 // Accessing public folder
 app.use(express.static(path.join(__dirname,'public')));
@@ -30,7 +31,7 @@ require('./config/passport')(passport);
 // load routes
 const auth = require('./routes/oauth');
 const index = require('./routes/index');
-const stories = require('./routes/stories');
+const diary = require('./routes/diary');
 
 // Map global promises
 mongoose.Promise = global.Promise;
@@ -43,7 +44,7 @@ mongoose.connect(keys.mongoURI,{
 .catch((err)=>console.log('Database server connection ERROR!...',err));
 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
  
 // parse application/json
 app.use(bodyParser.json());
@@ -63,14 +64,13 @@ app.use(passport.session());
 app.use((req, res, next)=>{
 
     res.locals.user = req.user || null;
-    console.log('Hello !!!----',res.locals.user);
     next();
 })
 
 // Use routes
 app.use('/auth',auth);
 app.use('/',index);
-app.use('/stories',stories);
+app.use('/diaries',diary);
 
 const port = process.env.PORT || 5000; 
 
