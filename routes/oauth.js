@@ -9,8 +9,9 @@ router.get('/google', passport.authenticate('google',{
 router.get('/google/callback', 
   passport.authenticate('google', { failureRedirect: '/' }),
   (req, res)=>{
-    console.log(req.user);
-    res.render('index/welcome',{user: req.user});
+
+    res.redirect('/dashboard');
+    // res.render('index/dashboard',{user: req.user});
   });
 
 router.get('/verify',(req,res)=>{

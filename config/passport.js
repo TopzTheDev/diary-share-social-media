@@ -54,10 +54,15 @@ module.exports = function(passport){
     );
 
     passport.serializeUser((user, done)=>{
-        done(null,user.id);
+        done(null, user.id);
     })
 
     passport.deserializeUser((id, done)=>{
-        Users.find({id}).then(user=> done(null, user))
+        Users.findById(id).then(user=> done(null, user))
     })
+
+    passport.serializeUser((user, done) => {
+        done(null, user.id);
+    });
+    
 } 

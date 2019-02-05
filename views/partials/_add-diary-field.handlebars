@@ -1,0 +1,56 @@
+<div class="post" id="pnl-post">
+    <div class="post__upper-bar">
+        <h1 class="post__title">Create your diary</h1>
+        <p class="post__exit" id="btn-exit">&Cross;</p>
+    </div>
+    <div class="post__main">
+        <div class="post__profile">
+            <img src="image/profile-dev.jpg" alt="Profile Image" class="post__profile-image">
+        </div>
+        <div class="post__form">
+            <form action="/stories/add" method="post" class="field-form">
+                <div class="field-form__group">
+                    <input type="text" name="title" class="post-inp post-inp--title" placeholder="Page Title">
+                </div>
+                <div class="field-form__group">
+                    <textarea name="body" class="post-inp post-inp--body" maxlength="200" placeholder="Hi! {{user.firstName}} how's your day?."></textarea>
+                </div>
+
+
+                <div class="field-form__group">
+                    <div class="field-form__group">
+                        <input type="checkbox" name="" id="ch_isAllow" class="post-ch">
+                        <label for="ch_isAllow" class="post-ch__label">Allow Comment</label>
+                    </div>
+                    <div class="field-form__group" style="margin-left: auto">
+                        <select name="status" class="post-sel">
+                            <i class="fas fa-globe-americas"></i>
+                            <option class="post-sel__option" value="public" selected>Public</option>
+                            <i class="fas fa-lock"></i>
+                            <option class="post-sel__option" value="private">Private</option>
+                            <i class="fas fa-user"></i>
+                            <option class="post-sel__option" value="unpublished">Only me</option>
+                        </select>
+                    </div>
+
+                </div>
+
+
+
+                <div class="field-form__group" style="margin-left: auto">
+                    <button class="btn btn--secondary">Post</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+    document.getElementById('btn-exit').addEventListener('click',()=>{
+        document.getElementById('btn-float-cover').classList.toggle('float-show');
+        document.getElementById('pnl-post').classList.remove('post-show');
+    
+    });
+</script>

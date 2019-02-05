@@ -1,0 +1,16 @@
+<button class="btn btn--floating" id="btn-float"><i class="fas fa-plus"></i></button>
+<div class="btn__floating-cover" id="btn-float-cover"></div>
+{{#if user}}
+
+{{else}}
+
+{{/if}}
+
+<script>
+    let countClick =0;
+    document.getElementById('btn-float').addEventListener('click', (e)=>{
+        console.log(countClick);
+        document.getElementById('pnl-post').classList.toggle('post-show');
+        document.getElementById('btn-float-cover').classList.toggle('float-show');
+    })
+</script>

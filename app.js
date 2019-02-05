@@ -30,6 +30,7 @@ require('./config/passport')(passport);
 // load routes
 const auth = require('./routes/oauth');
 const index = require('./routes/index');
+const stories = require('./routes/stories');
 
 // Map global promises
 mongoose.Promise = global.Promise;
@@ -59,16 +60,17 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //Set gloval variables
-app.use((req,res, next)=>{
+app.use((req, res, next)=>{
 
-    res.locals.user = req.use || null;
-
+    res.locals.user = req.user || null;
+    console.log('Hello !!!----',res.locals.user);
     next();
 })
 
 // Use routes
 app.use('/auth',auth);
 app.use('/',index);
+app.use('/stories',stories);
 
 const port = process.env.PORT || 5000; 
 
