@@ -255,6 +255,32 @@ main{
         transition: all 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
         
     }
+
+    &__card{ 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        font-size: 2.5rem;
+        color: #464646;
+        height: 5rem;
+        width: 5rem;
+        border-radius: 100%;
+        background-color: #fff;
+        box-shadow: 0 7px 15px rgba(0,0,0,0.3);
+        transition: all 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        -webkit-font-smoothing: antialiased;
+    
+        &:not(:last-child){
+            margin-right: 1rem;
+        }
+
+        &:hover{
+            color: #FF0000;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+            transform: scale(1.1) translate3d( 0, 0, 0);
+        }
+    }
 }
 
 //PROFILE =========================================================================
@@ -314,6 +340,8 @@ main{
         margin-top: 2rem;
         text-transform: uppercase;
     }
+
+    
 
     
 }
@@ -647,6 +675,179 @@ main{
         }
     }
 }
+//CARD =============================================================================
+.card{
+    display: flex;
+    box-shadow: 0 14px 40px rgba(#353068,0.4);
+    width: 100%;
+    height: 250px;
+
+    //Left Side
+    &__left{
+        width: 55%;
+        height: 100%;
+    }
+
+    &__top{
+        width: 100%;
+        margin: 0 auto;
+        height: 75%;
+    }
+
+    &__holder{
+        width: 95%;
+        height: 100%;
+        margin-left:auto;
+        border-radius: 10px;
+        box-shadow: 0 14px 40px rgba(#353068,0.2);
+        overflow: hidden;
+        transform: translateY(-20px);
+    }
+
+    &__img{
+       height: auto;
+       width: 100%;
+        
+    }
+
+    &__bottom{
+        height: 25%;
+        width: 100%;
+        padding: 15px 0 10px 15px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+
+    &__date{
+        color: #995CE3;
+        user-select: none;
+    }
+
+    &__day{
+        font-size: 45px;
+        margin-bottom: -10px;
+        margin-left: -1px;
+        letter-spacing: -6px;
+    }
+
+    &__month{
+        font-size: 16px;
+    }
+
+    &__tray{
+        display: flex;
+        font-size: 20px;
+        padding-right: 20px;
+        padding-bottom: 10px;
+        width: 50%;
+        color: #995CE3;
+        justify-content: space-between;
+    }
+
+    //Right Side
+    &__right{
+        padding: 15px 10px 10px 20px;
+        width: 45%;
+        height: 100%;
+        position: relative;
+
+    }
+
+    &__heading{
+        color: #fff;
+        font-size: 25px;
+        text-transform: uppercase;
+        text-align: left;
+        font-weight: 200;
+        line-height: 40px;
+        white-space: wrap;
+        overflow: hidden;
+        height: 55%;
+        &_span{
+            padding: 10px;
+            margin-bottom: 10px;
+            background-image: linear-gradient(to right,#353068 20%,#995CE3);
+            -webkit-box-decoration-break: clone;
+
+        }
+    }
+
+    &__profile{
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 45%;
+        margin-top: 10px;
+    }
+
+    &__profile-img-holder{
+        height: 40px;
+        width: 40px;
+        margin-right: 8px;
+        user-select: none;
+        position: relative;
+        border-radius: 100px;
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: -8px; left: -8px;
+            z-index: -1;
+            margin: 5px; 
+            width: 115%;
+            height: 116%;
+            border-radius: inherit; 
+            background-image: linear-gradient(to right,#353068 20%,#995CE3);
+          }
+    }
+
+    &__profile-img{
+        height: auto;
+        width: 100%;
+        border-radius: 100%;
+    }
+
+    &__profile-name{
+        color: var(--color-black);
+        font-size: 1.6rem;
+        font-weight: 400;
+        
+        &::after{
+            content: "";
+            display: block;
+            height: 4px;
+            width: 50%;
+            background-image: linear-gradient(to right,#353068 20%,#995CE3);
+            margin-top: 2px;
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+            
+        }
+    }
+
+    &__view{
+        position: absolute;
+        right: -15px;
+        bottom: -15px;
+        font-size: 40px;
+    }
+}
+
+//FlEX BOX ==========================================================================
+
+.flex{
+    display: flex;
+    flex-wrap: wrap;
+
+    &-col{
+        
+        padding: 0 15px ;
+        margin-top: 30px;
+        margin-bottom: 20px;
+        width: 50%;
+    }
+}
 
 //UTILITIES==========================================================================
 .mb-3{
@@ -667,4 +868,12 @@ main{
 
 .mt-1{
     margin-top: 10px;
+}
+
+.pd-1{
+    padding-top: 10px;
+}
+
+.pd-2{
+    padding-top: 20px;
 }
