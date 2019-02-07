@@ -3,6 +3,10 @@
 <div class="header login">
     <div class="row">
         <div class="login__nav">
+            <div class="btn--hamburger mr-1 ml-6" id="btn-hamburger">
+                    <class class="btn--hamburger_span">
+                    </class>
+                </div>
             <div class="login__logo">
                 <img src="/image/logo.png" alt="Diary Share" class="login__logo">
             </div>
@@ -10,7 +14,7 @@
             <div class="login__profile">
                 <img src="{{user.image}}" class="profile__img">
                 <div class="profile__name">{{user.firstName}} {{user.lastName}}</div>
-                <a href="/auth/logout" class="btn btn--logout">Logout</a>
+                {{!-- <a href="/auth/logout" class="btn btn--logout">Logout</a> --}}
             </div>
 
         </div>
@@ -43,3 +47,16 @@
 </div>
 
 {{/if}}
+
+<script>
+    let count = 0;
+    document.getElementById('btn-hamburger').addEventListener('click', (e)=>{
+    
+        
+        document.getElementById('btn-hamburger').classList.toggle('btn-action');
+        document.getElementById('pnl-hamburger').classList.toggle('bar-action');
+        document.getElementById('pnl-hamburger-cover').classList.toggle('cvr-action');
+    });
+
+
+</script>

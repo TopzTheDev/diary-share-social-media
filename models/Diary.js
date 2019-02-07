@@ -19,11 +19,6 @@ const DiarySchema = new Schema({
         default: 'public'
     },
 
-    rand:{
-        type: Number,
-        default: Math.floor(Math.random() * 6 ) + 1
-    },
-
     allowComments:{
         type: Boolean,
         default: true

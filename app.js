@@ -7,14 +7,23 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const keys = require('./config/keys');
 const path = require('path');
-
+const {truncate,stripTags,dateFormat} = require('./helpers/hbs');
 //Controller requiring
 // require('./controllers/registerController');
 
 const app = express();
 
 //Handlebar middleware
-app.engine('handlebars', exphbs({defaultLayout: 'main'}))
+app.engine('handlebars', exphbs({
+    helpers: {
+        dateFormat,
+        truncate,
+        stripTags
+    },
+    
+    defaultLayout: 'main'
+}))
+
 app.set('view engine', 'handlebars');
 
 // Load model here....

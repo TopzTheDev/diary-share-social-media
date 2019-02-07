@@ -1,1 +1,37 @@
-<h1>Showing Stories</h1>
+<div class="show">
+    <div class="show__bg-holder">
+        <div class="show__bg">
+        </div>
+        <div class="show__cover" style="background-image: url('/image/img-{{newDiary.rand}}.jpg');"></div>
+    </div>
+
+    <div class="show__post">
+        <h1 class="show__heading">
+            <span class="show__heading_span">
+                {{diary.title}}
+            </span>
+        </h1>
+        <div class="show__profile">
+            <div class="show__profile-img-holder">
+                <img src="{{diary.user.image}}" alt="" class="show__profile-img">
+            </div>
+            <div class="show__profile-post-holder">
+                <h4 class="show__profile-name">
+                    {{diary.user.firstName}} {{diary.user.lastName}}
+                </h4>
+                <p class="show__date">
+                    {{dateFormat diary.date 'MMMM Do YYYY, h:mm:ss a'}}
+                </p>
+            </div>
+
+            <div class="show__preview">
+                
+            </div>
+        </div>
+
+        <div class="show__body">
+            <p>{{stripTags diary.body}}</p>
+        </div>
+
+    </div>
+</div>
