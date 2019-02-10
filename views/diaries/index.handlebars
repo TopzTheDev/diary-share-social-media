@@ -58,7 +58,12 @@
                         </div>
 
                         <h4 class="card__profile-name">
-                            {{user.firstName}} {{user.lastName}}
+                            {{#if (checkUser user.id ../user.id)}}
+                                You
+                                {{else}}    
+                                {{user.firstName}} {{user.lastName}}
+                            {{/if}}
+                            
                         </h4>
                     </div>
 
