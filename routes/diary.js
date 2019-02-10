@@ -11,6 +11,7 @@ const Diary = mongoose.model('diaries');
 router.get('/', (req, res)=>{
     Diary.find({status:'public'})
     .populate('user')
+    .sort({date:'desc'})
     .then(diaries=>{
         let newDiaries = (dateConvert(diaries));
         res.render('diaries/index',{newDiaries});
@@ -21,6 +22,7 @@ router.get('/show/:id',(req,res)=>{
 
     Diary.findById(req.params.id)
     .populate('user')
+    .populate('comments.commentUser')
     .then(diary =>{
         console.log(diary);
         res.render('diaries/show',{diary});
@@ -37,8 +39,16 @@ router.get('/add',ensureAuthenticated,(req,res)=>{
 router.get('/edit/:id',(req,res)=>{
 
     Diary.findById(req.params.id)
-    .then(diary => 
-        res.render('diaries/edit',{diary})
+    .then(diary => {
+
+        if(diary.user.id !== req.user.id){
+            res.redirect('/diaries');
+        }else{
+            res.render('diaries/edit',{diary})
+        }
+
+        
+     }
     )
     
 
@@ -98,5 +108,30 @@ router.delete('/:id', (req,res)=>{
     })
 
 })
+
+
+// GET Comment Reques ==============
+router.post('/comment/:id',(req,res)=>{
+
+    Diary.findById(req.params.id)
+    .then(diary=>{
+
+        const newComment={
+            commentBody: req.body.commentBody,
+            commentUser: req.user.id
+        }
+
+        diary.comments.unshift(newComment);
+
+        diary.save()
+        .then(story=>{
+            res.redirect(`/diaries/show/${story.id}`);
+        })
+
+    })
+
+
+});
+
 
 module.exports = router;

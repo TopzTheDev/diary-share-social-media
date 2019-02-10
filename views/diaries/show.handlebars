@@ -11,27 +11,74 @@
                 {{diary.title}}
             </span>
         </h1>
-        <div class="show__profile">
-            <div class="show__profile-img-holder">
-                <img src="{{diary.user.image}}" alt="" class="show__profile-img">
-            </div>
-            <div class="show__profile-post-holder">
-                <h4 class="show__profile-name">
-                    {{diary.user.firstName}} {{diary.user.lastName}}
-                </h4>
-                <p class="show__date">
-                    {{dateFormat diary.date 'MMMM Do YYYY, h:mm:ss a'}}
-                </p>
+        <div class="show__parent">
+            <div class="show__division">
+                <div class="show__profile">
+                    <div class="show__profile-img-holder">
+                        <img src="{{diary.user.image}}" alt="" class="show__profile-img">
+                    </div>
+                    <div class="show__profile-post-holder">
+                        <h4 class="show__profile-name">
+                            {{diary.user.firstName}} {{diary.user.lastName}}
+                        </h4>
+                        <p class="show__date">
+                            {{dateFormat diary.date 'MMMM Do YYYY, h:mm:ss a'}}
+                        </p>
+                    </div>
+
+                    <div class="show__preview">
+
+                    </div>
+                </div>
+
+                <div class="show__body">
+                    <p>{{stripTags diary.body}}</p>
+                </div>
             </div>
 
-            <div class="show__preview">
+            <div class="show__division">
+
+                {{#if diary.allowComments}}
+                <h1 class="heading--secondary mb-2">
+                    Comments
+                </h1>
+                {{#if user}} 
+                    <form action="/diaries/comment/{{diary.id}}" method="post" class="show__comment" >
+                        <div class="field-form__group">
+                            <textarea name="commentBody" class="post-inp post-inp--body"
+                                placeholder="Type your comment here" style="width:100%"></textarea>
+                        </div>
+                        <button class="btn btn--secondary" style="display:block; margin-left: auto">Reply</button>
+                    </form>
+                {{else}}
+                    <div class="show__comment disabled">
+                        <div class="field-form__group">
+                            <textarea name="body" class="post-inp post-inp--body"
+                                placeholder="Login first before you can comment." style="width:100%" disabled></textarea>
+                        </div>
+                        <button disabled class="btn btn--secondary" style="display:block; margin-left: auto">Reply</button>
+
+                        <div class="show__disabled">
+                            
+                            <p class="paragraph--header">Login first before you can comment.</p>
+                            <a href="/auth/google" class="btn btn--secondary btn--disabled mt-1">Login</a>
+                        </div>
+                    </div>
+                {{/if}}
+
+                {{#each diary.comments}}
+                    {{> _comment}}    
+                {{/each}}
                 
+
+                {{else}}
+
+                {{/if}}
+
             </div>
         </div>
 
-        <div class="show__body">
-            <p>{{stripTags diary.body}}</p>
-        </div>
+
 
     </div>
 </div>

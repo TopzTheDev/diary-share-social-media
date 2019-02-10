@@ -1,5 +1,8 @@
 <div class="row pd-2">
+    {{#if newDiaries}}
     <h1 class="mb-2 ml-3 heading--secondary">Social Diaries</h1>
+    {{/if}}
+
     <div class="flex">
         {{#each newDiaries}}
         <div class="flex-col">
@@ -23,15 +26,19 @@
                         </div>
 
                         <div class="card__tray">
-                            
+                            {{#if ../user}}
                             <a href="" class="btn--link"><i class="far fa-comment-alt" title="comments"></i></a>
                             <a href="" class="btn--link"><i class="far fa-heart" title="Like"></i></a>
-                            <a href="/diaries/edit/{{id}}" class="btn--link"><i class="far fa-edit" title="Edit"></i></a>
-                            <form action="/diaries/{{id}}?_method=DELETE" method="post">
-                            <input type="hidden" name="_method" value="DELETE">
-                            <button class="btn--link"><i class="far fa-trash-alt" title="Delete"></i></button>
-                            </form>
-                            
+                                {{#if (checkUser user.id ../user.id)}}
+                                    <a href="/diaries/edit/{{id}}" class="btn--link"><i class="far fa-edit"
+                                            title="Edit"></i></a>
+                                    <form action="/diaries/{{id}}?_method=DELETE" method="post">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button class="btn--link"><i class="far fa-trash-alt" title="Delete"></i></button>
+                                    </form>
+                                {{/if}}
+
+                            {{/if}}
                         </div>
                     </div>
 
@@ -55,13 +62,28 @@
                         </h4>
                     </div>
 
-                    <a href="/diaries/show/{{id}}" class="btn btn--secondary card__view" title="View Diary Content" id="btn-view"><i class="fa fa-angle-right"></i></a>
+                    <a href="/diaries/show/{{id}}" class="btn btn--secondary card__view" title="View Diary Content"
+                        id="btn-view"><i class="fa fa-angle-right"></i></a>
                 </div>
             </div>
         </div>
         {{else}}
-
+        <div class="card__empty">
+            <div class="card__empty-caption">
+                <h1 class="heading--secondary" style="font-weight: 300">The social diary needs your diary! Share it to
+                    us.</h1>
+                <button class="btn btn--secondary" id="btn-sharePost">Post your first diary</button>
+            </div>
+            <img src="/image/image-3.png" alt="No post created" class="card__empty-img">
+        </div>
         {{/each}}
     </div>
 
 </div>
+
+<script>
+    document.getElementById('btn-sharePost').addEventListener('click', (e) => {
+        document.getElementById('pnl-post').classList.toggle('post-show');
+        document.getElementById('btn-float-cover').classList.toggle('float-show');
+    })
+</script>

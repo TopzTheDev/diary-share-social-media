@@ -147,7 +147,7 @@ main{
         background-image: linear-gradient(to right,#995CE3 20%,#01BBFF,#00EBC6);
         -webkit-background-clip: text;
         box-shadow:0 14px 40px rgba(#995CE3,0.5);
-        
+        color: #353068;
         &:not(:last-child){
             margin-right: 10px;
         }
@@ -385,6 +385,11 @@ main{
     &--footer{
         font-size: 1.6rem;
     }
+    
+    &--comment{
+        font-weight: 400;
+        font-size: 1.4rem;
+    }
 }
 
 // HEADINGS =========================================================================
@@ -499,10 +504,11 @@ main{
     }
 
     &--body{
+        font-size: 14px;
         max-width: 100%;
         min-width: 100%;
-        max-height: 150px;
-        min-height: 150px;
+        max-height: 100px;
+        min-height: 100px;
         border-radius: 15px;
         resize: none;
         overflow: hidden;
@@ -670,7 +676,7 @@ main{
 //POST ========================================================
 
 .float-show{
-    transform: scale(50) !important;
+    transform: scale(100) !important;
 }
 
 .float-show body{
@@ -718,12 +724,16 @@ main{
     }
 
     &__profile{
+        height: 50px;
+        width: 50px;
         flex: 0 0 10%;
+        overflow: hidden;
+        border-radius: 100%;
     }
 
     &__profile-image{
         width: 100%;
-        height: auto;;
+        height: 100%;
     }
 
 
@@ -748,9 +758,10 @@ main{
 
 .card{
     display: flex;
-    box-shadow: 0 14px 40px rgba(#353068,0.2);
+    box-shadow: 0 5px 20px rgba(#353068,0.2);
     width: 100%;
-    height: 250px;
+    height: 260px;
+    border-radius: 20px;
 
     //Left Side
     &__left{
@@ -768,7 +779,7 @@ main{
         width: 95%;
         height: 100%;
         margin-left:auto;
-        border-radius: 10px;
+        border-radius: 20px;
         box-shadow: 0 14px 40px rgba(#353068,0.2);
         overflow: hidden;
         transform: translateY(-20px);
@@ -783,7 +794,7 @@ main{
     &__bottom{
         height: 25%;
         width: 100%;
-        padding: 15px 0 10px 15px;
+        padding: 15px 0 15px 15px;
         display: flex;
         align-items: flex-end;
         justify-content: space-between;
@@ -812,7 +823,12 @@ main{
         padding-bottom: 10px;
         width: 50%;
         color: #995CE3;
-        justify-content: space-between;
+        justify-content: flex-end;
+        & > *{
+            &:not(:last-child){
+                margin-right: 10px;
+            }
+        }
     }
 
     //Right Side
@@ -833,10 +849,13 @@ main{
         line-height: 40px;
         white-space: wrap;
         overflow: hidden;
+        margin-right: 10px;
         height: 55%;
+        
         &_span{
             padding: 10px;
             margin-bottom: 10px;
+            
             background-image: linear-gradient(to right,#353068 20%,#995CE3);
             -webkit-box-decoration-break: clone;
 
@@ -949,6 +968,7 @@ main{
 //SHOW =============================================================================
 
 .show{
+    
 
     &__heading{
         color: #fff;
@@ -1063,18 +1083,6 @@ main{
         
     }
 
-    // &__profile-img-holder:hover ~ &__preview{
-    //     display: block;
-    // }
-
-    // &__preview:hover{
-    //     display: block;
-    // }
-
-    // &__preview:hover &__profile-img-holder{
-    //     z-index: 15;
-    // }
-
     &__preview{
         display: none;
         position: absolute;
@@ -1118,7 +1126,160 @@ main{
         word-spacing: 2px;
         line-height: 1.5;
     }
+
+    &__parent{
+        display: flex;
+
+    }
+
+    &__division{
+        
+        margin-top: 20px;
+
+        &:first-child{
+            flex-grow: 1;
+            flex-shrink: 0;
+            flex-basis: 50%;
+        }
+
+        &:last-child{
+            flex-grow: 1;
+            flex-basis: 50%;
+        }
+
+        &:not(:last-child){
+            margin-right: 30px;
+        }
+    }
+
+    &__comment{
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(#000,0.2);
+        border-radius: 20px;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    &__disabled{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(#f1f1f1,0.4);
+        z-index: 300;
+    }
 }
+
+.disabled{
+    
+    
+}
+
+.comment{
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 5px 20px rgba(#000,0.2);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+
+    &:not(:last-child){
+        margin-bottom: 15px;
+    }
+
+    &::before{
+        
+        content: url('/image/qoutation.png');
+        transform: scale(0.4);
+        opacity: 0.1;
+        color: #e9e9e9;
+        position: absolute;
+        top: -70px;
+        right: -70px;
+    }
+
+    &__date{
+        margin-top: 5px;
+        font-size: 12px;
+    }
+
+    &__profile{
+        display: flex;
+        align-items: center;
+        width: 100%;
+        position: relative;
+        
+    }
+
+    &__profile-img-holder{
+        height: 40px;
+        width: 40px;
+        margin-right: 8px;
+        user-select: none;
+        position: relative;
+        border-radius: 100px;
+        z-index: 5;
+        &:before {
+            content: "";
+            position: absolute;
+            top: -8px; left: -8px;
+            z-index: -1;
+            margin: 5px; 
+            width: 115%;
+            height: 116%;
+            border-radius: inherit; 
+            background-image: linear-gradient(to right,#353068 20%,#995CE3);
+          }
+    }
+
+    &__profile-img{
+        height: auto;
+        width: 100%;
+        border-radius: 100%;
+    }
+
+    &__profile-name{
+        color: var(--color-black);
+        font-size: 18px;
+        font-weight: 400;
+        
+        &::after{
+            content: "";
+            display: block;
+            height: 4px;
+            width: 50%;
+            background-image: linear-gradient(to right, #995CE3 20%, #01BBFF, #00EBC6);
+            margin-top: 2px;
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+            
+        }
+    }
+
+    &__profile-post-holder{
+        z-index: 5;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__body{
+        margin-top: 10px;
+    }
+
+    &__post{
+
+    }
+
+}
+
+
 //HAMBURGER =========================================================================
 .hamburger{
 
@@ -1205,6 +1366,8 @@ main{
         z-index: 400;
 
     }
+
+    
 }
 
 //ACTION

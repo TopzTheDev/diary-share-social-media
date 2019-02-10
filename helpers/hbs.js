@@ -23,6 +23,10 @@ module.exports = {
         return moment(date).format(format);
     },
 
+    dateRelative: (date) =>{
+        return moment(date).startOf('hour').fromNow(); 
+    },
+
     random:()=>{
         return Math.floor(Math.random() * 5 ) + 1;
     },
@@ -49,5 +53,13 @@ module.exports = {
 
     select: (selected, option)=>{
         return option.fn(this).replace( new RegExp(' value=\"'+ selected + '\"'), '$& selected= "selected"').replace( new RegExp('>'+ selected + '</option>'), 'selected="selected"$&');
+    },
+
+    checkUser:(postUser, User)=>{
+
+        if(postUser === User){
+            return true;
+        }
+
     }
 }

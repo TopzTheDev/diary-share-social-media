@@ -1,0 +1,20 @@
+<div class="comment">
+    
+    <div class="comment__profile">
+        <div class="comment__profile-img-holder">
+            <img src="{{commentUser.image}}" alt="" class="comment__profile-img">
+        </div>
+        <div class="comment__profile-post-holder">
+            <h4 class="comment__profile-name">
+                {{commentUser.firstName}} {{commentUser.lastName}}
+            </h4>
+            <p class="comment__date">
+                {{dateRelative commentDate}}
+            </p>
+        </div>
+    </div>
+
+    <div class="comment__body">
+        <p class="paragraph--comment">{{commentBody}}</p>
+    </div>
+</div>

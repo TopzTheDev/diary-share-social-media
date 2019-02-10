@@ -8,7 +8,7 @@ const session = require('express-session');
 const keys = require('./config/keys');
 const path = require('path');
 const methodOverride = require('method-override');
-const {truncate,stripTags,dateFormat,random, publicity,select} = require('./helpers/hbs');
+const {truncate,stripTags,dateFormat,random, publicity,select, dateRelative, checkUser} = require('./helpers/hbs');
 //Controller requiring
 // require('./controllers/registerController');
 
@@ -22,7 +22,9 @@ app.engine('handlebars', exphbs({
         stripTags,
         random,
         publicity,
-        select
+        select,
+        dateRelative,
+        checkUser
     },
     
     defaultLayout: 'main'
