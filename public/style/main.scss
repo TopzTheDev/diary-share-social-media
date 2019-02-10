@@ -31,7 +31,6 @@ body{
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    overflow: visible;
 }
 
 main{
@@ -284,6 +283,11 @@ main{
     }
 
     &--link{
+        background: none;
+        border: none;
+        font: inherit;
+        cursor: pointer;
+        outline: none;
         color: #995CE3;
         &:hover{
             color: #353068;
@@ -741,6 +745,7 @@ main{
     }
 }
 //CARD =============================================================================
+
 .card{
     display: flex;
     box-shadow: 0 14px 40px rgba(#353068,0.2);
@@ -897,6 +902,33 @@ main{
         bottom: -15px;
         font-size: 40px;
     }
+
+    &__empty{
+        display: flex;
+        width: 100%;
+    }
+
+    &__empty-img{
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        z-index: -100;
+    }
+
+    &__empty-caption{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 30%;
+        text-align: center;
+        & > *{
+            
+            margin-bottom: 20px;
+
+        }
+    }
 }
 
 //FlEX BOX ==========================================================================
@@ -953,6 +985,8 @@ main{
         height: 100%;
         width: 100%;
         background-image: linear-gradient(to bottom,rgba(#353068,0.3) 20%,rgba(#995CE3,0.3));
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 
     &__bg{
@@ -1202,7 +1236,11 @@ main{
     top: 0 !important;
     transform: rotate(45deg) !important;
 }
-
+//EDIT
+.edit{
+    width: 100%;
+    margin: 0 auto;
+}
 
 
 //UTILITIES==========================================================================

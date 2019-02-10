@@ -1,1 +1,51 @@
-<h1>Edit Handlebars</h1>
+<div class="row">
+    
+    <div class="edit">
+        <h1 class="heading--secondary mb-2">Edit Diaries</h1>
+        <form action="/diaries/{{diary.id}}?_method=PUT" method="post" class="field-form">
+        <input type="hidden" name="_method" value="PUT">
+        <div class="field-form__group">
+            <input type="text" name="title" class="post-inp post-inp--title" placeholder="Page Title" value="{{diary.title}}">
+        </div>
+        <div class="field-form__group">
+            <textarea name="bodyEdit" class="post-inp post-inp--body" maxlength="200"
+             style="width:100%">{{diary.body}}</textarea>
+        </div>
+        <div class="field-form__group">
+            <div class="field-form__group">
+                <input type="checkbox" class="post-ch" name="allowComments" id="allowComments" {{#if diary.allowComments}}
+                    checked
+                {{/if}}>
+                <label for="allowComments" class="post-ch__label">Allow Comment</label>
+            </div>
+            <div class="field-form__group" style="margin-left: auto">
+                <select name="status" class="post-sel">
+                    {{#select diary.status}}
+                        <option class="post-sel__option" value="public" selected>Public</option>
+                        <option class="post-sel__option" value="private">Private</option>
+                        <option class="post-sel__option" value="unpublished">Only me</option>
+                    {{/select}}
+                    
+                </select>
+            </div>
+
+        </div>
+        <div class="field-form__group" style="margin-left: auto">
+            <button class="btn btn--secondary">Post</button>
+        </div>
+    </form>
+    </div>
+    
+</div>
+<script>
+
+    CKEDITOR.replace('bodyEdit',{
+        toolbar: 'MyToolbar',
+        width: '100%'
+    });
+
+    document.getElementById('btn-exit').addEventListener('click', () => {
+        document.getElementById('btn-float-cover').classList.toggle('float-show');
+        document.getElementById('pnl-post').classList.remove('post-show');
+    });
+</script>

@@ -6,12 +6,13 @@ const isAllowed = require('../helpers/isAllowed');
 const dateConvert = require('../helpers/dateConvert');
 const Diary = mongoose.model('diaries');
 
+
 //Populate all user diary
 router.get('/', (req, res)=>{
     Diary.find({status:'public'})
     .populate('user')
     .then(diaries=>{
-        let newDiaries = dateConvert(diaries);
+        let newDiaries = (dateConvert(diaries));
         res.render('diaries/index',{newDiaries});
     });
 });
@@ -33,9 +34,14 @@ router.get('/add',ensureAuthenticated,(req,res)=>{
     res.render('stories/add');
 });
 
-router.get('/edit/:id',ensureAuthenticated,(req,res)=>{
+router.get('/edit/:id',(req,res)=>{
 
-    res.render('stories/edit');
+    Diary.findById(req.params.id)
+    .then(diary => 
+        res.render('diaries/edit',{diary})
+    )
+    
+
 });
 
 //Handling post request
@@ -58,6 +64,39 @@ router.post('/',(req,res)=>{
         .catch(err=>console.log(err));
 
     
+})
+
+// PUT Method here ===========
+router.put('/:id', (req,res)=>{
+
+    
+    Diary.findById(req.params.id)
+    .then(diary =>{
+
+        diary.title= req.body.title
+        diary.body= req.body.bodyEdit
+        diary.allowComments= isAllowed(req.body.allowComments)
+        diary.status= req.body.status
+
+        diary.save()
+        .then(()=>{
+            res.redirect('/feed');
+        })  
+
+    })
+
+
+})
+
+// DELETE Request method here ===========
+router.delete('/:id', (req,res)=>{
+
+
+    Diary.remove({_id: req.params.id})
+    .then(()=>{
+        res.redirect('/feed');
+    })
+
 })
 
 module.exports = router;

@@ -1,7 +1,9 @@
 <div class="row pd-2">
-    <h1 class="mb-2 ml-3 heading--secondary">Social Diaries</h1>
+    {{#if diaries}}
+        <h1 class="mb-2 ml-3 heading--secondary">Your Diaries</h1>
+    {{/if}}
     <div class="flex">
-        {{#each newDiaries}}
+        {{#each diaries}}
         <div class="flex-col">
             <div class="card">
                 <div class="card__left">
@@ -23,10 +25,14 @@
                         </div>
 
                         <div class="card__tray">
+                            {{#each (publicity status)}}
+                            <a class="btn--link"><i class="{{statusIcon}}" title="{{statusTag}}"></i></a>
+                            {{/each}}
                             
-                            <a href="" class="btn--link"><i class="far fa-comment-alt" title="comments"></i></a>
+                            <a href="" class="btn--link"><i class="far fa-comment-alt" title="Comments"></i></a>
                             <a href="" class="btn--link"><i class="far fa-heart" title="Like"></i></a>
-                            <a href="/diaries/edit/{{id}}" class="btn--link"><i class="far fa-edit" title="Edit"></i></a>
+                            <a href="/diaries/edit/{{id}}" class="btn--link" id="btn-edit"><i class="far fa-edit" title="Edit"></i></a>
+                            
                             <form action="/diaries/{{id}}?_method=DELETE" method="post">
                             <input type="hidden" name="_method" value="DELETE">
                             <button class="btn--link"><i class="far fa-trash-alt" title="Delete"></i></button>
@@ -60,8 +66,20 @@
             </div>
         </div>
         {{else}}
-
+        <div class="card__empty">
+            <div class="card__empty-caption">
+                <h1 class="heading--secondary" style="font-weight: 300">No post yet?</h1>   
+                <button class="btn btn--secondary" id="btn-noPost">Post your first diary</button>
+            </div>
+            <img src="/image/image-3.png" alt="No post created" class="card__empty-img">
+        </div>
         {{/each}}
     </div>
 
 </div>
+<script>
+    document.getElementById('btn-noPost').addEventListener('click', (e)=>{
+        document.getElementById('pnl-post').classList.toggle('post-show');
+        document.getElementById('btn-float-cover').classList.toggle('float-show');
+    })
+</script>

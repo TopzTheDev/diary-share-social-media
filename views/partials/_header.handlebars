@@ -49,10 +49,17 @@
 {{/if}}
 
 <script>
-    let count = 0;
+    let toggle = 0;
     document.getElementById('btn-hamburger').addEventListener('click', (e)=>{
-    
         
+        if(toggle){
+            document.body.style.overflow = 'visible';
+            toggle--;
+        }
+        else{
+            document.body.style.overflow = 'hidden' ;
+            toggle++;
+        }    
         document.getElementById('btn-hamburger').classList.toggle('btn-action');
         document.getElementById('pnl-hamburger').classList.toggle('bar-action');
         document.getElementById('pnl-hamburger-cover').classList.toggle('cvr-action');

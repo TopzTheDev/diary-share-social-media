@@ -21,5 +21,33 @@ module.exports = {
     dateFormat: (date, format) =>{
 
         return moment(date).format(format);
+    },
+
+    random:()=>{
+        return Math.floor(Math.random() * 5 ) + 1;
+    },
+
+    publicity: (status) =>{
+        let statusIcon, statusTag;
+        if(status === 'private'){
+            statusIcon = 'fas fa-lock'
+            statusTag = 'Private'
+        }
+        else if(status === 'public'){
+            statusIcon = 'fas fa-globe-europe'
+            statusTag = 'Public'
+        }
+        else{
+            statusIcon = 'fas fa-user'
+            statusTag = 'Only me'
+        }
+        return [{
+            statusIcon,
+            statusTag
+        }];
+    },
+
+    select: (selected, option)=>{
+        return option.fn(this).replace( new RegExp(' value=\"'+ selected + '\"'), '$& selected= "selected"').replace( new RegExp('>'+ selected + '</option>'), 'selected="selected"$&');
     }
 }

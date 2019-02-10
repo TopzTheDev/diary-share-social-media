@@ -7,7 +7,8 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const keys = require('./config/keys');
 const path = require('path');
-const {truncate,stripTags,dateFormat} = require('./helpers/hbs');
+const methodOverride = require('method-override');
+const {truncate,stripTags,dateFormat,random, publicity,select} = require('./helpers/hbs');
 //Controller requiring
 // require('./controllers/registerController');
 
@@ -18,7 +19,10 @@ app.engine('handlebars', exphbs({
     helpers: {
         dateFormat,
         truncate,
-        stripTags
+        stripTags,
+        random,
+        publicity,
+        select
     },
     
     defaultLayout: 'main'
@@ -51,6 +55,9 @@ mongoose.connect(keys.mongoURI,{
 })
 .then(()=>console.log('Database Server Connected...'))
 .catch((err)=>console.log('Database server connection ERROR!...',err));
+
+// override with POST having ?_method=DELETE
+app.use(methodOverride('_method'))
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
