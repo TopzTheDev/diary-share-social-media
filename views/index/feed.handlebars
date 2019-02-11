@@ -57,7 +57,7 @@
                         </div>
 
                         <h4 class="card__profile-name">
-                            {{user.firstName}} {{user.lastName}}
+                            <a class="show__profile-link" href="/profile/{{user.id}}"> {{user.firstName}} {{user.lastName}}</a>
                         </h4>
                     </div>
 
@@ -75,7 +75,6 @@
         </div>
         {{/each}}
     </div>
-
 </div>
 <script>
     document.getElementById('btn-noPost').addEventListener('click', (e)=>{

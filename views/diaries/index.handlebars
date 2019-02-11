@@ -3,6 +3,7 @@
     <h1 class="mb-2 ml-3 heading--secondary">Social Diaries</h1>
     {{/if}}
 
+    
     <div class="flex">
         {{#each newDiaries}}
         <div class="flex-col">
@@ -61,7 +62,7 @@
                             {{#if (checkUser user.id ../user.id)}}
                                 You
                                 {{else}}    
-                                {{user.firstName}} {{user.lastName}}
+                                <a class="show__profile-link" href="/profile/{{user.id}}"> {{user.firstName}} {{user.lastName}}</a>
                             {{/if}}
                             
                         </h4>

@@ -47,6 +47,7 @@ require('./config/passport')(passport);
 const auth = require('./routes/oauth');
 const index = require('./routes/index');
 const diary = require('./routes/diary');
+const user = require('./routes/user');
 
 // Map global promises
 mongoose.Promise = global.Promise;
@@ -89,6 +90,7 @@ app.use((req, res, next)=>{
 app.use('/auth',auth);
 app.use('/',index);
 app.use('/diaries',diary);
+app.use('/profile',user);
 
 const port = process.env.PORT || 5000; 
 

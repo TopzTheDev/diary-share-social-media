@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const keys = require('./keys');
+const coverPhoto = require('../helpers/coverPhoto');
 
 //User Schema Model
 const Users = mongoose.model('users');
@@ -14,19 +15,17 @@ module.exports = function(passport){
             callbackURL: '/auth/google/callback',
             proxy: true
         },(accessToken, refreshToken, profile, done)=>{
-            // console.log(accessToken);
-            console.log(profile);
-
+            console.log(profile._json);
             // Removing the size indicated on image url link "?sz"
             const image = profile.photos[0].value.substring(0, profile.photos[0].value.indexOf('?'));
-
             // Storing the data on newUser object
             const newUser = {
                 googleID: profile.id,
                 email: profile.emails[0].value,
                 firstName: profile.name.givenName,
                 lastName: profile.name.familyName,
-                image: image
+                image: image,
+                coverPhoto: coverPhoto(profile._json.cover)
             }
 
             //Checking if the account is existing

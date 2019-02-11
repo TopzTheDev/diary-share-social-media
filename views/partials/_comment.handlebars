@@ -6,7 +6,7 @@
         </div>
         <div class="comment__profile-post-holder">
             <h4 class="comment__profile-name">
-                {{commentUser.firstName}} {{commentUser.lastName}}
+                <a class="show__profile-link" href="/profile/{{commentUser.id}}"> {{commentUser.firstName}} {{commentUser.lastName}}</a>
             </h4>
             <p class="comment__date">
                 {{dateRelative commentDate}}

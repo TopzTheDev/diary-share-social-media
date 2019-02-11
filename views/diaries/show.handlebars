@@ -19,7 +19,7 @@
                     </div>
                     <div class="show__profile-post-holder">
                         <h4 class="show__profile-name">
-                            {{diary.user.firstName}} {{diary.user.lastName}}
+                            <a class="show__profile-link" href="/profile/{{diary.user.id}}">{{diary.user.firstName}} {{diary.user.lastName}}</a>
                         </h4>
                         <p class="show__date">
                             {{dateFormat diary.date 'MMMM Do YYYY, h:mm:ss a'}}

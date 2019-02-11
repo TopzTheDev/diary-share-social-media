@@ -22,6 +22,9 @@ const UserSchema = new Schema({
     },
     image:{
         type: String
+    },
+    coverPhoto:{
+        type: String
     }
 })
 

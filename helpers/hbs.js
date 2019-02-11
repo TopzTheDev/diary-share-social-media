@@ -57,9 +57,12 @@ module.exports = {
 
     checkUser:(postUser, User)=>{
 
-        if(postUser === User){
-            return true;
+        if(postUser!== null && User!== null){
+            if(postUser === User){
+                return true;
+            }
         }
+        
 
     }
 }
